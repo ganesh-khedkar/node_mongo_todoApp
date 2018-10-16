@@ -13,7 +13,7 @@ router.get('/', Todo.list);
 router.post('/todos', Todo.save);
 
 //update todos
-router.put('/update/:id', Todo.put);
+//router.put('/update/:id', Todo.put);
 
 //delete todo from id
 router.delete('/delete/:id', Todo.delete);
