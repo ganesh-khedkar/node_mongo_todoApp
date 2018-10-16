@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset ="UTF-8">
+
+  <head>
+    <title>Todos</title>
+
+  </head>
+  <body>
+    <h1> Stuff I need todo.</h1>
+    <form action="/todos" method ="post">
+    <input type= "text" name ="description">
+    <button type="submit">Add</button>
+    </form>
+    <ul>
+      {{#todos}}
+       <li>
+       <form action="/todos/{{_id}}/complited" method="post">
+       {{description}} - {{done}} <button type="submit"> Done </button>
+       </form>
+       </li>
+      {{/todos}}
+    </ul>
+    <h3>
+    <ul>
+    {{#doneTodos}}
+     <li>
+       <form action="/todos/{{_id}}/complited" method="post">
+       {{description}} - {{done}} <button type="submit"> Done </button>
+       </form>
+       </li>
+    {{/doneTodos}}
+    </ul>
+    </h3>
+  </body>
+</html>
