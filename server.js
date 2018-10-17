@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost:27017/node_mongo_todo', { useNewUrlParser:
 
 
 const app = express();
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const mustacheExpressInstance = mustacheExpress();

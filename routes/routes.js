@@ -19,7 +19,7 @@ router.put('/update/:id', Todo.put);
 router.delete('/delete/:id', Todo.delete);
 
 
-//router.post('/todos/:id',Todo.edit);
+router.post('/todos/:id/complited', Todo.edit);
 
 
 module.exports = router;
