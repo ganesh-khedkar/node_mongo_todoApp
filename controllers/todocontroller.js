@@ -18,8 +18,8 @@ todoconrtoller.list = function (req, res) {
         let doneTodos = results.filter(function (todo) {
             return todo.done;
         });
-        res.render('index', { todos: todos, doneTodos: doneTodos });
-       // res.json({todos:todos,doneTodos:doneTodos}); 
+        //res.render('index', { todos: todos, doneTodos: doneTodos });
+        res.json({ todos: todos, doneTodos: doneTodos });
 
     });
 };
@@ -30,38 +30,56 @@ todoconrtoller.list = function (req, res) {
 
 //Save the new todos in database
 todoconrtoller.save = function (req, res) {
-    let newTodo = new Todo({ description:req.body.description });
-    newTodo.save((err,todos)=>{
-        if(err){
-            res.json({msg:'faild to add data'});
-        }else{
-         res.json({msg:' data added sucessfully'});
+    let newTodo = new Todo({ description: req.body.description });
+    newTodo.save((err, todos) => {
+        if (err) {
+            res.json({ msg: 'faild to add data' });
+        } else {
+            res.json({ msg: ' data added sucessfully' });
         }
 
     });
-    
-    //.then(function (result) {
-        //res.redirect('/');
-       /* res.json(todos);
-         console.log('Todo data save  in list');
-    })
-        .catch(function (err) {
-            console.log(err);
-            res.redirect('/');
+}
 
-        });*/
-};
+//Create new user
+/*todoconrtoller.save = function (req, res) {
+    let newTodo = new Todo({
+        user: req.body.username, email: req.body.email,
+        password: req.body.password, passwordConf: req.body.passwordConf,
+       // description: req.body.description
+    });
+    newTodo.save((err, todos) => {
+        if (err) {
+            res.json({ msg: 'faild to add data' });
+        } else {
+            res.json({ msg: ' data added sucessfully' });
+        }
+
+    });
+};*/
+
+//.then(function (result) {
+//res.redirect('/');
+/* res.json(todos);
+  console.log('Todo data save  in list');
+})
+ .catch(function (err) {
+     console.log(err);
+     res.redirect('/');
+
+ });*/
+
 
 //Delete to item from todoList
 todoconrtoller.delete = function (req, res) {
-    Todo.remove({ _id: req.params.id }, function (err,result) {
+    Todo.remove({ _id: req.params.id }, function (err, result) {
         if (err) {
             res.json(err);
             //console.log(err);
         }
         else {
             res.json(result);
-           // console.log("Todo item deleted!");
+            // console.log("Todo item deleted!");
             //res.redirect("/");
         }
     });

@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 
+/*var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+*/
 mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://localhost:27017/node_mongo_todo', { useNewUrlParser: true })
