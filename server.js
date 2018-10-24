@@ -2,12 +2,15 @@ const express = require('express');
 const mustacheExpress = require('mustache-express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/routes');
+const routes = require('./routes/routes'); 
+const jwt    = require('jsonwebtoken');
 
-/*var swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('./swagger.json');
-*/
+
+
+
 mongoose.Promise = global.Promise;
+
+
 
 mongoose.connect('mongodb://localhost:27017/node_mongo_todo', { useNewUrlParser: true })
 
@@ -28,7 +31,19 @@ app.engine('mustache', mustacheExpressInstance);
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
+//app.set('Secret', secret);
+/*module.exports = {
+
+  secret : "hello"
+}*/
+
+
 app.use('/', routes)
+//app.use('/api', ProtectedRoutes);
+
+
+
+
 
 app.listen(3001, function () {
     console.log('listing on port 3001......');

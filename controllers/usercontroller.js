@@ -4,6 +4,8 @@ var mongoose = require("mongoose");
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+//const auth = require('../middleware/auth');
+
 
 
 var userconrtoller = {};
@@ -79,7 +81,7 @@ userconrtoller.save = function (req, res) {
                             expiresIn: '2h'
                         });
                     return res.status(200).json({
-                        success: 'Welcome to the JWT Auth',
+                        // success: 'Welcome to the JWT Auth',
                         token: JWTToken
                     });
                 }
